@@ -1,21 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import useMenu from "../../hooks/useMenu";
 import photo3 from "../../assets/proyectos/Photo3.jpg";
 
 export default function SobreMi() {
   const { showMenu } = useMenu();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setMounted(true), 50);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <>
       <div className="flex flex-col lg:flex-row items-center h-full justify-center mx-10 gap-x-16">
-        <div className="lg:w-1/3 w-full px-4 py-6 lg:px-0 lg:py-0 md:flex md:items-center md:justify-center">
+        <div
+          className={`lg:w-1/3 w-full px-4 py-6 lg:px-0 lg:py-0 md:flex md:items-center md:justify-center transition-all duration-500 ${
+            mounted ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-6"
+          }`}
+        >
           <img src={photo3} alt="" className="rounded-lg" />
         </div>
-        <div className="lg:w-[70%] text-center lg:text-left">
+        <div
+          className={`lg:w-[70%] text-center lg:text-left transition-all duration-500 delay-150 ${
+            mounted ? "opacity-100 translate-x-0" : "opacity-0 translate-x-6"
+          }`}
+        >
           <h2 className="text-3xl mb-4">
             Acerca <span className="text-[#13bbff] ">de mi</span>
           </h2>
           <p className="leading-8 mb-4">
-            Soy un desarrollador con 2 años de experiencia Mi enfoque abarca el
+            Soy un desarrollador con 4 años de experiencia Mi enfoque abarca el
             desarrollo frontend con React y Angular, así como el backend
             utilizando Laravel y Node.js. Soy un firme creyente de que de que
             siempre hay algo nuevo por aprender y eso me motiva para mejorar

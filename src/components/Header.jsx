@@ -10,9 +10,7 @@ export default function Header() {
         className="fixed top-4 left-0 right-0 z-999 flex items-center justify-between bg-transparent transition-all p-10 md:p-4 mx-4 md:mx-auto"
         style={{ maxWidth: "1240px", marginLeft: "auto", marginRight: "auto" }}
       >
-        <a href="#" class="bg text-[36px] text-[#fff] ">
-          Dev <span className="text-[#13bbff] ">S.</span>
-        </a>
+
         <div
           className="bx bx-menu ml-24 md:ml-0 text-4xl z-9999 cursor-pointer lg:hidden"
           id="menu-icon"

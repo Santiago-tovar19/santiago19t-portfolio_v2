@@ -23,10 +23,10 @@ export default function Educacion() {
               scope="row"
               class="px-6 py-4 font-medium text-white whitespace-nowrap dark:text-white"
             >
-              Educación Universitaria <br /> (Ing de Software)
+              Educación Universitaria <br /> (Ing Industrial)
             </th>
             <td class="px-6 py-4 text-white">IUP Santiago Mariño</td>
-            <td class="px-6 py-4 text-white">2021 - actualidad</td>
+            <td class="px-6 py-4 text-white">2021 - 2026</td>
           </tr>
           <tr class="border-b bg-[#1b1f24] dark:bg-gray-800 dark:border-gray-700 h-24">
             <th

@@ -1,11 +1,16 @@
 import React from "react";
+import useInView from "../../hooks/useInView";
 import useMenu from "../../hooks/useMenu";
 
 export default function Contacto() {
   const { abrirCorreo } = useMenu();
+  const [sectionRef, inView] = useInView();
   return (
     <section
-      className="lg:h-screen my-20 lg:mt-0 flex items-center justify-center"
+      ref={sectionRef}
+      className={`lg:h-screen my-20 lg:mt-0 flex items-center justify-center transition-all duration-700 ${
+        inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+      }`}
       id="contact"
     >
       <div className="lg:w-[1240px] w-full flex flex-col items-center">

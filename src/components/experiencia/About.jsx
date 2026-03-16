@@ -1,14 +1,30 @@
-import React, { useState } from "react";
-import SobreMi from "./SobreMi";
-import Educacion from "./Educacion";
-import Habilidades from "./Habilidades";
-import Experiencia from "./Experiencia";
+import React, { useState, useEffect } from "react";
+import useInView from "../../hooks/useInView";
+import SobreMi from "../about/SobreMi";
+import Educacion from "../about/Educacion";
+import Habilidades from "../about/Habilidades";
+import Experiencia from "../about/Experiencia";
 
-export default function About() {
+export default function ExperienciaPage() {
   const [aboutFilter, setAboutFilter] = useState("ABOUT");
+  const [visible, setVisible] = useState(true);
+  const [sectionRef, inView] = useInView();
+
+  const handleTabClick = (filter) => {
+    if (filter === aboutFilter) return;
+    setVisible(false);
+    setTimeout(() => {
+      setAboutFilter(filter);
+      setVisible(true);
+    }, 200);
+  };
+
   return (
     <section
-      className="lg:h-screen flex bg-[#22282f] py-14 lg:py-0"
+      ref={sectionRef}
+      className={`lg:h-screen flex bg-[#22282f] py-14 lg:py-0 transition-all duration-700 ${
+        inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+      }`}
       id="sobre-mi"
     >
       <div className="w-[1140px] flex flex-col items-center justify-center mx-auto">
@@ -26,7 +42,7 @@ export default function About() {
           <div className="bg-[#1b1f24] h-96  w-full lg:w-[33%] flex flex-col items-center justify-center  py-7 px-8 rounded-lg ">
             <div
               className="border-b border-solid border-[#13bbff] w-full text-center text-lg cursor-pointer pt-6"
-              onClick={() => setAboutFilter("ABOUT")}
+              onClick={() => handleTabClick("ABOUT")}
             >
               <button
                 className={`${
@@ -38,7 +54,7 @@ export default function About() {
             </div>
             <div
               className="border-b border-solid border-[#13bbff] w-full text-center text-lg cursor-pointer pt-6"
-              onClick={() => setAboutFilter("EDUCACION")}
+              onClick={() => handleTabClick("EDUCACION")}
             >
               <button
                 className={`${
@@ -50,7 +66,7 @@ export default function About() {
             </div>
             <div
               className="border-b border-solid border-[#13bbff] w-full text-center text-lg cursor-pointer pt-6"
-              onClick={() => setAboutFilter("HABILIDADES")}
+              onClick={() => handleTabClick("HABILIDADES")}
             >
               <button
                 className={`${
@@ -61,19 +77,16 @@ export default function About() {
               </button>
             </div>
             <div
-              onClick={() => setAboutFilter("EXPERIENCIA")}
+              onClick={() => handleTabClick("EXPERIENCIA")}
               className="w-full text-center text-lg cursor-pointer pt-6"
             >
-              <button
-                className={`${
-                  aboutFilter === "EXPERIENCIA" && "text-[#13bbff]"
-                } mb-5 cursor-pointer`}
-              >
-                Experiencia
-              </button>
             </div>
           </div>
-          <div className="bg-[#1b1f24] h-full lg:h-[425px] w-full mt-14 lg:mt-0 lg:w-[65%] rounded-lg">
+          <div
+            className={`bg-[#1b1f24] h-full lg:h-[425px] w-full mt-14 lg:mt-0 lg:w-[65%] rounded-lg transition-all duration-200 ${
+              visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"
+            }`}
+          >
             {
               {
                 ABOUT: <SobreMi />,

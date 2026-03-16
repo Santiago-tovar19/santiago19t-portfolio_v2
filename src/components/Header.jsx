@@ -1,18 +1,35 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import useMenu from "../hooks/useMenu";
 
 export default function Header() {
   const { showMenu, setShowMenu, abrirCorreo, handleClickMenu } = useMenu();
-  console.log(showMenu);
+  const [activeSection, setActiveSection] = useState("home");
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const sectionIds = ["contact", "proyectos", "portafolio", "sobre-mi", "home"];
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+      for (const id of sectionIds) {
+        const el = document.getElementById(id);
+        if (el && el.getBoundingClientRect().top <= 120) {
+          setActiveSection(id);
+          return;
+        }
+      }
+      setActiveSection("home");
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
   return (
     <>
       <header
-        className="fixed top-4 left-0 right-0 z-999 flex items-center justify-between bg-transparent transition-all p-10 md:p-4 mx-4 md:mx-auto"
-        style={{ maxWidth: "1240px", marginLeft: "auto", marginRight: "auto" }}
+        className="fixed top-0 left-0 right-0 z-[999] flex items-center justify-between transition-all duration-300 px-10 py-4 bg-[#1b1f24]"
       >
 
         <div
-          className="bx bx-menu ml-24 md:ml-0 text-4xl z-9999 cursor-pointer lg:hidden"
+          className="bx bx-menu ml-auto text-4xl z-9999 cursor-pointer lg:hidden"
           id="menu-icon"
           onClick={() => setShowMenu(!showMenu)}
         ></div>
@@ -28,7 +45,7 @@ export default function Header() {
           <li>
             <a
               href="#home"
-              className="text-lg  font-medium text-[#c3cad5] ml-10 transition-all hover:text-[#13bbff] "
+              className={`text-lg font-medium ml-10 transition-all hover:text-[#13bbff] ${activeSection === "home" ? "text-[#13bbff]" : "text-[#c3cad5]"}`}
               onClick={() => setShowMenu(false)}
             >
               Home
@@ -37,7 +54,7 @@ export default function Header() {
           <li>
             <a
               href="#sobre-mi"
-              className="text-lg  font-medium text-[#c3cad5] ml-10 transition-all hover:text-[#13bbff] "
+              className={`text-lg font-medium ml-10 transition-all hover:text-[#13bbff] ${activeSection === "sobre-mi" ? "text-[#13bbff]" : "text-[#c3cad5]"}`}
               onClick={() => setShowMenu(false)}
             >
               Sobre
@@ -46,7 +63,7 @@ export default function Header() {
           <li>
             <a
               href="#portafolio"
-              className="text-lg  font-medium text-[#c3cad5] ml-10 transition-all hover:text-[#13bbff] "
+              className={`text-lg font-medium ml-10 transition-all hover:text-[#13bbff] ${activeSection === "portafolio" ? "text-[#13bbff]" : "text-[#c3cad5]"}`}
               onClick={() => setShowMenu(false)}
             >
               Portafolio
@@ -55,7 +72,7 @@ export default function Header() {
           <li>
             <a
               href="#proyectos"
-              className="text-lg  font-medium text-[#c3cad5] ml-10 transition-all hover:text-[#13bbff] "
+              className={`text-lg font-medium ml-10 transition-all hover:text-[#13bbff] ${activeSection === "proyectos" ? "text-[#13bbff]" : "text-[#c3cad5]"}`}
               onClick={() => setShowMenu(false)}
             >
               Proyectos
@@ -64,7 +81,7 @@ export default function Header() {
           <li>
             <a
               href="#contact"
-              className="text-lg  font-medium text-[#c3cad5] ml-10 transition-all hover:text-[#13bbff] "
+              className={`text-lg font-medium ml-10 transition-all hover:text-[#13bbff] ${activeSection === "contact" ? "text-[#13bbff]" : "text-[#c3cad5]"}`}
               onClick={() => setShowMenu(false)}
             >
               Contacto

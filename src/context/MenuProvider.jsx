@@ -12,15 +12,10 @@ const MenuProvider = ({ children }) => {
   };
 
   const abrirCorreo = () => {
-    console.log("abriendo correo");
-    const correo = "santiagocentenot@gmail.com";
-
-    const asunto = "";
-
-    const enlaceCorreo =
-      "mailto:" + correo + "?subject=" + encodeURIComponent(asunto);
-
-    window.open(enlaceCorreo, "_blank");
+    window.open(
+      "https://mail.google.com/mail/?view=cm&to=santiagocentenot@gmail.com",
+      "_blank"
+    );
   };
   return (
     <MenuContext.Provider

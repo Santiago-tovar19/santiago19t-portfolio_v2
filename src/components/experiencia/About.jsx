@@ -4,6 +4,7 @@ import SobreMi from "../about/SobreMi";
 import Educacion from "../about/Educacion";
 import Habilidades from "../about/Habilidades";
 import Experiencia from "../about/Experiencia";
+import CodeBackground from "../ui/CodeBackground";
 
 export default function ExperienciaPage() {
   const [aboutFilter, setAboutFilter] = useState("ABOUT");
@@ -22,12 +23,11 @@ export default function ExperienciaPage() {
   return (
     <section
       ref={sectionRef}
-      className={`lg:h-screen flex bg-[#22282f] py-14 lg:py-0 transition-all duration-700 ${
-        inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
-      }`}
+      className={`lg:h-screen flex bg-[#22282f] py-14 lg:py-0 relative overflow-hidden section-bg transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}`}
       id="sobre-mi"
     >
-      <div className="w-[1140px] flex flex-col items-center justify-center mx-auto">
+      <CodeBackground />
+      <div className="w-[1140px] flex flex-col items-center justify-center mx-auto" style={{ position: "relative", zIndex: 1 }}>
         <h2 className="text-white text-4xl text-right mb-10">
           {
             {

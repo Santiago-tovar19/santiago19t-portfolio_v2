@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import useInView from "../../hooks/useInView";
+import CodeBackground from "../ui/CodeBackground";
 
 export default function ExperienciaSection() {
   const jobs = [
@@ -16,15 +17,27 @@ export default function ExperienciaSection() {
       ],
     },
     {
-      company: "S.S.O C.A Servicios Petroleros",
-      role: "Analista de Laboratorio",
-      date: "Octubre 2025 - Enero 2026",
+      company: "Vas Aviation",
+      role: "Full Stack Developer",
+      date: "2024 - Actualidad",
       responsibilities: [
-        "Analizar y procesar datos técnicos relacionados con operaciones de cementación en una empresa de servicios petroleros.",
-        "Configurar y dar soporte a equipos especializados, incluyendo aspectos de conectividad y redes.",
-        "Montar y ejecutar pruebas siguiendo normas API y estándares de la industria.",
-        "Documentar resultados y procedimientos para garantizar trazabilidad y calidad.",
-        "Colaborar con equipos técnicos para optimizar procesos y resolver incidencias operativas.",
+        "Diseñar y desarrollar una plataforma web integral para la gestión operativa de servicios de aviación, abarcando módulos de reservas, seguimiento de vuelos y administración de tripulación.",
+        "Implementar dashboards interactivos con visualización de datos en tiempo real, permitiendo al equipo operativo tomar decisiones informadas de manera ágil.",
+        "Construir y mantener APIs RESTful robustas para la integración con sistemas externos de la industria aeronáutica, garantizando disponibilidad y rendimiento bajo alta demanda.",
+        "Aplicar buenas prácticas de seguridad en el manejo de datos sensibles de pasajeros y operaciones, cumpliendo con estándares internacionales del sector.",
+        "Colaborar directamente con stakeholders para traducir requerimientos del negocio en soluciones técnicas escalables y de alto impacto.",
+      ],
+    },
+    {
+      company: "Agrourbana",
+      role: "Full Stack Developer",
+      date: "2022 - 2024",
+      responsibilities: [
+        "Desarrollar y mantener una plataforma digital para la gestión y comercialización de productos agrícolas urbanos, conectando productores locales con consumidores finales.",
+        "Implementar módulos de inventario, pedidos y logística de entrega, optimizando los flujos operativos de la empresa y reduciendo tiempos de gestión.",
+        "Diseñar interfaces de usuario intuitivas y responsivas, priorizando la accesibilidad y facilidad de uso tanto para productores como para clientes.",
+        "Integrar pasarelas de pago y sistemas de notificación en tiempo real, mejorando la experiencia de compra y aumentando la tasa de conversión.",
+        "Participar activamente en la planificación de sprints, revisiones de código y definición de arquitectura, contribuyendo a la evolución continua del producto.",
       ],
     },
     {
@@ -79,18 +92,17 @@ export default function ExperienciaSection() {
   return (
     <section
       ref={sectionRef}
-      className={` flex bg-[#1b1f24] lg:py-0 transition-all duration-700 ${
-        inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
-      }`}
+      className={`flex bg-[#1b1f24] lg:py-0 relative overflow-hidden section-bg transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}`}
       id="experiencia"
     >
-      <div className="w-full max-w-[1140px] mx-auto flex flex-col justify-center py-40 px-6 lg:px-0">
+      <CodeBackground />
+      <div className="w-full max-w-[1140px] mx-auto flex flex-col justify-center py-40 px-6 lg:px-0" style={{ position: "relative", zIndex: 1 }}>
         <h2 className="text-white text-4xl text-left mb-12">Experiencia</h2>
 
-        <div className="w-full flex flex-col lg:flex-row lg:items-start gap-10 lg:gap-16 justify-center">
+        <div className="w-full flex flex-col lg:flex-row lg:items-start gap-10 lg:gap-16 justify-center bg-[#1b1f24] rounded-xl p-8">
           {/* Tabs izquierda */}
           <div className="relative w-full lg:w-[220px] shrink-0">
-            <div className="absolute left-0 top-0 h-full w-px bg-[#2f3f52]" />
+            <div className={`absolute left-0 top-0 h-full w-px bg-[#2f3f52] timeline-line ${inView ? "in-view" : ""}`} />
 
             <div className="flex flex-col">
               {jobs.map((job, index) => (

@@ -2,10 +2,23 @@ import React, { useEffect, useState } from "react";
 import Typewriter from "typewriter-effect";
 import useMenu from "../../hooks/useMenu";
 import photo from "../../assets/proyectos/Photo2.png";
-import pdf from "../../assets/pdf/CV_Santigo_Tovar_Español.pdf";
+import pdf from "../../assets/pdf/CV_Santigo_Tovar_Español.pdf.pdf";
 
 export default function Hero() {
   const { showMenu, abrirCorreo } = useMenu();
+
+  const createRipple = (e) => {
+    const btn = e.currentTarget;
+    const circle = document.createElement("span");
+    const diameter = Math.max(btn.clientWidth, btn.clientHeight);
+    const rect = btn.getBoundingClientRect();
+    circle.style.width = circle.style.height = `${diameter}px`;
+    circle.style.left = `${e.clientX - rect.left - diameter / 2}px`;
+    circle.style.top = `${e.clientY - rect.top - diameter / 2}px`;
+    circle.classList.add("ripple-wave");
+    btn.querySelector(".ripple-wave")?.remove();
+    btn.appendChild(circle);
+  };
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -109,15 +122,16 @@ export default function Hero() {
             >
               <a
                 href="#"
-                class="inline-block px-4 py-2 bg-[#13bbff] text-[#1b1f24] border-2 border-[#13bbff] rounded-lg font-semibold text-[15px] transition-all duration-500 ease-in-out hover:bg-transparent hover:text-[#13bbff] "
-                onClick={() => abrirCorreo()}
+                class="btn-ripple inline-block px-4 py-2 bg-[#13bbff] text-[#1b1f24] border-2 border-[#13bbff] rounded-lg font-semibold text-[15px] transition-all duration-500 ease-in-out hover:bg-transparent hover:text-[#13bbff]"
+                onClick={(e) => { createRipple(e); abrirCorreo(); }}
               >
                 Salúdame
               </a>
               <a
                 href={pdf}
                 target="_blank"
-                class="inline-block px-4 py-2 hover:bg-[#13bbff] hover:text-[#1b1f24] border-2 border-[#13bbff] rounded-lg font-semibold text-[15px] transition-all duration-500 ease-in-out bg-transparent  text-[#13bbff] ml-4"
+                class="btn-ripple inline-block px-4 py-2 hover:bg-[#13bbff] hover:text-[#1b1f24] border-2 border-[#13bbff] rounded-lg font-semibold text-[15px] transition-all duration-500 ease-in-out bg-transparent text-[#13bbff] ml-4"
+                onClick={createRipple}
               >
                 Curriculum
               </a>

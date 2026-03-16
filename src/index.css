@@ -1,3 +1,97 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Profile image animation */
+@keyframes img-reveal {
+  0%   { opacity: 0; transform: scale(0.85) translateY(20px); filter: blur(6px); }
+  60%  { filter: blur(0); }
+  100% { opacity: 1; transform: scale(1) translateY(0); filter: blur(0); }
+}
+.photo-reveal {
+  animation: img-reveal 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #1b1f24;
+}
+::-webkit-scrollbar-thumb {
+  background: #13bbff;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #0fa3e0;
+}
+
+/* Clip-path reveal */
+.section-reveal {
+  clip-path: inset(0 0 100% 0);
+  opacity: 0;
+  transition: clip-path 0.8s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.8s ease;
+}
+.section-reveal.in-view {
+  clip-path: inset(0 0 0% 0);
+  opacity: 1;
+}
+
+/* Timeline line */
+.timeline-line {
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+}
+.timeline-line.in-view {
+  transform: scaleY(1);
+}
+
+/* Ripple */
+.btn-ripple {
+  position: relative;
+  overflow: hidden;
+}
+.ripple-wave {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(0);
+  animation: ripple-anim 0.6s linear;
+  pointer-events: none;
+}
+@keyframes ripple-anim {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* Dot grid background */
+.section-bg {
+  background-image: radial-gradient(rgba(19, 187, 255, 0.07) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* Floating code characters */
+@keyframes float-code {
+  0%   { transform: translateY(0px) rotate(0deg); opacity: 0.2; }
+  50%  { transform: translateY(-18px) rotate(5deg); opacity: 0.45; }
+  100% { transform: translateY(0px) rotate(0deg); opacity: 0.2; }
+}
+.code-char {
+  position: absolute;
+  color: #13bbff;
+  font-family: 'Courier New', monospace;
+  font-weight: 700;
+  pointer-events: none;
+  user-select: none;
+  animation: float-code linear infinite;
+  will-change: transform, opacity;
+}

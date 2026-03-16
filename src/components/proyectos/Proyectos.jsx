@@ -1,19 +1,19 @@
 import React from "react";
 import useInView from "../../hooks/useInView";
+import CodeBackground from "../ui/CodeBackground";
 
 export default function Proyectos() {
   const [sectionRef, inView] = useInView();
   return (
     <section
       ref={sectionRef}
-      className={`w-full py-16 bg-[#22282f] flex flex-col items-center justify-center transition-all duration-700 ${
-        inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
-      }`}
+      className={`w-full py-16 bg-[#22282f] flex flex-col items-center justify-center relative overflow-hidden section-bg transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}`}
       id="proyectos"
     >
-      <h2 className="text-4xl mb-10">Mas proyectos</h2>
-      <div className="grid lg:grid-cols-3 md:grid-cols-2 items-center justify-center lg:w-[1240px] px-10 gap-10">
-        <div className={`bg-[#1b1f24] py-4 px-6 flex flex-col gap-y-5 rounded-lg border-b border-solid border-[#13bbff] hover:transform hover:-translate-y-2 hover:transition-transform duration-500 transition-all delay-[100ms] ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+      <CodeBackground />
+      <h2 className="text-4xl mb-10" style={{ position: "relative", zIndex: 1 }}>Mas proyectos</h2>
+      <div className="grid lg:grid-cols-3 md:grid-cols-2 items-center justify-center lg:w-[1240px] px-10 gap-10" style={{ position: "relative", zIndex: 1 }}>
+        <div style={{ transitionDelay: "100ms" }} className={`bg-[#1b1f24] py-4 px-6 flex flex-col gap-y-5 rounded-lg border-b border-solid border-[#13bbff] hover:-translate-y-3 hover:scale-105 hover:shadow-[0_8px_30px_rgba(19,187,255,0.15)] duration-150 transition-all ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
           <div className="flex justify-between">
             <span className="text-5xl text-[#13bbff] ">
               <i class="ri-folder-2-line"></i>
@@ -49,7 +49,7 @@ export default function Proyectos() {
             <span>datepicker</span>
           </div>
         </div>
-        <div className={`bg-[#1b1f24] py-4 px-6 flex flex-col gap-y-5 rounded-lg border-b border-solid border-[#13bbff] hover:transform hover:-translate-y-2 hover:transition-transform duration-500 transition-all ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+        <div style={{ transitionDelay: "200ms" }} className={`bg-[#1b1f24] py-4 px-6 flex flex-col gap-y-5 rounded-lg border-b border-solid border-[#13bbff] hover:-translate-y-3 hover:scale-105 hover:shadow-[0_8px_30px_rgba(19,187,255,0.15)] duration-150 transition-all ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
           <div className="flex justify-between">
             <span className="text-5xl text-[#13bbff] ">
               <i class="ri-folder-2-line"></i>
@@ -84,7 +84,7 @@ export default function Proyectos() {
             <span>Tailwind</span>
           </div>
         </div>
-        <div className={`bg-[#1b1f24] py-4 px-6 flex flex-col gap-y-5 rounded-lg border-b border-solid border-[#13bbff] hover:transform hover:-translate-y-2 hover:transition-transform duration-500 transition-all ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+        <div style={{ transitionDelay: "300ms" }} className={`bg-[#1b1f24] py-4 px-6 flex flex-col gap-y-5 rounded-lg border-b border-solid border-[#13bbff] hover:-translate-y-3 hover:scale-105 hover:shadow-[0_8px_30px_rgba(19,187,255,0.15)] duration-150 transition-all ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
           <div className="flex justify-between">
             <span className="text-5xl text-[#13bbff] ">
               <i class="ri-folder-2-line"></i>
@@ -119,7 +119,7 @@ export default function Proyectos() {
             <span>CSS</span>
           </div>
         </div>
-        <div className={`bg-[#1b1f24] py-4 px-6 flex flex-col gap-y-5 rounded-lg border-b border-solid border-[#13bbff] hover:transform hover:-translate-y-2 hover:transition-transform duration-500 transition-all ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+        <div style={{ transitionDelay: "400ms" }} className={`bg-[#1b1f24] py-4 px-6 flex flex-col gap-y-5 rounded-lg border-b border-solid border-[#13bbff] hover:-translate-y-3 hover:scale-105 hover:shadow-[0_8px_30px_rgba(19,187,255,0.15)] duration-150 transition-all ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
           <div className="flex justify-between">
             <span className="text-5xl text-[#13bbff] ">
               <i class="ri-folder-2-line"></i>
@@ -154,7 +154,7 @@ export default function Proyectos() {
             <span>Bootstrap</span>
           </div>
         </div>
-        <div className={`bg-[#1b1f24] py-4 px-6 flex flex-col gap-y-5 rounded-lg border-b border-solid border-[#13bbff] hover:transform hover:-translate-y-2 hover:transition-transform duration-500 transition-all ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+        <div style={{ transitionDelay: "500ms" }} className={`bg-[#1b1f24] py-4 px-6 flex flex-col gap-y-5 rounded-lg border-b border-solid border-[#13bbff] hover:-translate-y-3 hover:scale-105 hover:shadow-[0_8px_30px_rgba(19,187,255,0.15)] duration-150 transition-all ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
           <div className="flex justify-between">
             <span className="text-5xl text-[#13bbff] ">
               <i class="ri-folder-2-line"></i>
@@ -191,7 +191,7 @@ export default function Proyectos() {
             <span>API</span>
           </div>
         </div>
-        <div className={`bg-[#1b1f24] py-4 px-6 flex flex-col gap-y-5 rounded-lg border-b border-solid border-[#13bbff] hover:transform hover:-translate-y-2 hover:transition-transform duration-500 transition-all ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+        <div style={{ transitionDelay: "600ms" }} className={`bg-[#1b1f24] py-4 px-6 flex flex-col gap-y-5 rounded-lg border-b border-solid border-[#13bbff] hover:-translate-y-3 hover:scale-105 hover:shadow-[0_8px_30px_rgba(19,187,255,0.15)] duration-150 transition-all ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
           <div className="flex justify-between">
             <span className="text-5xl text-[#13bbff] ">
               <i class="ri-folder-2-line"></i>

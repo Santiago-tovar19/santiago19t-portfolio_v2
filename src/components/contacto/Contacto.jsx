@@ -1,6 +1,8 @@
 import React from "react";
+import Typewriter from "typewriter-effect";
 import useInView from "../../hooks/useInView";
 import useMenu from "../../hooks/useMenu";
+import CodeBackground from "../ui/CodeBackground";
 
 export default function Contacto() {
   const { abrirCorreo } = useMenu();
@@ -8,14 +10,21 @@ export default function Contacto() {
   return (
     <section
       ref={sectionRef}
-      className={`lg:h-screen my-20 lg:mt-0 flex items-center justify-center transition-all duration-700 ${
-        inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
-      }`}
+      className={`lg:h-screen my-20 lg:mt-0 flex items-center justify-center relative overflow-hidden section-bg transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}`}
       id="contact"
     >
-      <div className="lg:w-[1240px] w-full flex flex-col items-center">
-        <h2 className="text-center text-3xl lg:text-6xl font-bold mb-10 text-[#13bbff] ">
-          ¡Saludame!
+      <CodeBackground />
+      <div className="lg:w-[1240px] w-full flex flex-col items-center" style={{ position: "relative", zIndex: 1 }}>
+        <h2 className="text-center text-3xl lg:text-6xl font-bold mb-10 text-[#13bbff]">
+          <Typewriter
+            options={{
+              strings: ["¿Tienes un proyecto?", "¡Hablemos!"],
+              autoStart: true,
+              loop: true,
+              delay: 90,
+              deleteSpeed: 55,
+            }}
+          />
         </h2>
         <p className="lg:w-1/2 mx-16 lg:mx-0 lg:text-xl text-center text-[#c3cad5]">
           Estaré encantado de recibir tu contacto si quieres conversar acerca de

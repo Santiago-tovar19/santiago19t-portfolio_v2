@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Typewriter from "typewriter-effect";
 import useMenu from "../../hooks/useMenu";
 import photo from "../../assets/proyectos/Photo2.png";
-import pdf from "../../assets/pdf/CV_Santigo_Tovar_Español.pdf.pdf";
+import pdf from "../../assets/pdf/CV_Santiago_Tovar.pdf.pdf";
 
 export default function Hero() {
   const { showMenu, abrirCorreo } = useMenu();
